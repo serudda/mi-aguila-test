@@ -19,6 +19,11 @@
 
 
   /// BADGE-COLOR
+  &--primary {
+    background-color: rgba(0, 204, 153, 0.2);
+    color: map-get($color, slate);
+  }
+
   &--neutral {
     background-color: map-get($color, extraDarkSnow);
     color: map-get($color, silver);

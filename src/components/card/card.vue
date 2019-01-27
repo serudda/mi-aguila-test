@@ -2,10 +2,15 @@
 <template>
   <div class="ma-card" :class="cardClass" @click="onCardClick">
     <div class="ma-card__info p-3 w-100">
-      <span class="ma-badge ma-badge--xs ma-badge--neutral mb-3">
-        <span class="font-weight-9 mr-2">id</span>
-        92915593-d070-49d4-94d1-4e4bff65772d
-      </span>
+      <div class="title mb-3">
+        <span class="ma-badge ma-badge--xs ma-badge--neutral">
+          <span class="color-slate font-weight-9 mr-2">id</span>
+          {{ data.check_code }}
+        </span>
+        <span class="color-silver font-size-md mx-3">·</span>
+        <span class="ma-badge ma-badge--xs ma-badge--primary">
+          <span class="color-dark-primary font-weight-8 mr-2">plate</span> {{ data.car.plate }}</span>
+      </div>
       <div class="dates">
         <div class="dates__detail mb-2">
           <span class="title color-slate font-weight-9">start</span>
@@ -54,7 +59,16 @@ export default {
       const startLng = this.data.start.pickup_location.coordinates[0];
       const endLat = this.data.end.pickup_location.coordinates[1];
       const endLng = this.data.end.pickup_location.coordinates[0];
-      this.$emit('drive-changed', { start: { lat: startLat, lng: startLng }, end: { lat: endLat, lng: endLng } });
+      const waypointLat = this.data.driver_location.coordinates[1];
+      const waypointLng = this.data.driver_location.coordinates[0];
+      this.$emit('drive-changed',
+        { start:
+          { lat: startLat, lng: startLng },
+          end:
+          { lat: endLat, lng: endLng },
+          waypoint:
+          { lat: waypointLat, lng: waypointLng }
+        });
     },
   },
 };

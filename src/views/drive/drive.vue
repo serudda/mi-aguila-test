@@ -5,7 +5,8 @@
       <ma-map
         name="routes"
         :origin-coord="originCoord"
-        :destination-coord="destinationCoord"></ma-map>
+        :destination-coord="destinationCoord"
+        :waypoint-coord="waypointCoord"></ma-map>
     </div>
     <div class="drives-section px-5">
       <div class="title d-flex align-items-center mb-3">
@@ -56,6 +57,7 @@ export default {
       drives: [],
       originCoord: {lat: 4.6633728, lng: -74.0522469},
       destinationCoord: {lat: 4.7432147, lng: -74.0404901},
+      waypointCoord: {lat: 4.7432147, lng: -74.0404901},
     };
   },
   beforeMount() {
@@ -70,9 +72,10 @@ export default {
       // Init drive props
       this.drives = data;
     },
-    changeDrive({ start, end }) {
+    changeDrive({ start, end, waypoint }) {
       this.originCoord = start;
       this.destinationCoord = end;
+      this.waypointCoord = waypoint;
     }
   },
 };

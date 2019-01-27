@@ -10,6 +10,7 @@
 import './map.scss';
 import markerStartIcon from '../../assets/pin-start.svg';
 import markerEndIcon from '../../assets/pin-end.svg';
+import markerWaypointIcon from '../../assets/pin-waypoint.svg';
 
 export default {
   name: 'ma-map',
@@ -23,6 +24,9 @@ export default {
     destinationCoord: {
       type: Object,
     },
+    waypointCoord: {
+      type: Object,
+    }
   },
   data() {
     return {
@@ -42,6 +46,10 @@ export default {
     },
     destinationCoord(newDestinationCoord, oldDestinationCoord) {
       if(newDestinationCoord === oldDestinationCoord) { return; }
+      this.calculateAndDisplayRoute(this.directionsService, this.directionsDisplay);
+    },
+    waypointCoord(newWaypointCoord, oldWaypointCoord) {
+      if(newWaypointCoord === oldWaypointCoord) { return; }
       this.calculateAndDisplayRoute(this.directionsService, this.directionsDisplay);
     },
   },
@@ -78,17 +86,22 @@ export default {
     calculateAndDisplayRoute(directionsService, directionsDisplay) {
       const origin = new google.maps.LatLng(this.originCoord.lat, this.originCoord.lng);
       const destination = new google.maps.LatLng(this.destinationCoord.lat, this.destinationCoord.lng);
+      const waypoint = new google.maps.LatLng(this.waypointCoord.lat, this.waypointCoord.lng);
+
       directionsService.route({
         origin,
         destination,
+        waypoints: [{ location: waypoint }],
+        optimizeWaypoints: true,
         travelMode: 'DRIVING',
       }, (response, status) => {
         if (status === 'OK') {
           directionsDisplay.setDirections(response);
           this.clearMarkers();
-          const {start, end} = this.createMarkerImage();
+          const {start, end, current} = this.createMarkerImage();
           this.makeMarker( origin, start);
           this.makeMarker( destination, end);
+          this.makeMarker( waypoint, current);
         } else {
           console.log(`Directions request failed due to ${status}`);
         }
@@ -98,7 +111,8 @@ export default {
     createMarkerImage() {
       return {
         start: new google.maps.MarkerImage(markerStartIcon),
-        end: new google.maps.MarkerImage(markerEndIcon)
+        end: new google.maps.MarkerImage(markerEndIcon),
+        current: new google.maps.MarkerImage(markerWaypointIcon)
       };
     },
 
