@@ -1,7 +1,12 @@
 <!-- Template -->
 <template>
   <div class="drive-view">
-    <ma-map></ma-map>
+    <div class="map-section">
+      <ma-map
+        name="routes"
+        :origin-coord="originCoord"
+        :destination-coord="destinationCoord"></ma-map>
+    </div>
     <div class="drives-section px-5">
       <div class="title d-flex align-items-center mb-3">
         <h3 class="color-silver m-0 mr-4">
@@ -24,6 +29,7 @@
         v-for="(drive, index) in drives"
         :key="index"
         :data="drive"
+        @drive-changed="changeDrive"
         class="mb-3">
       </ma-card>
     </div>
@@ -48,6 +54,8 @@ export default {
   data() {
     return {
       drives: [],
+      originCoord: {lat: 4.6633728, lng: -74.0522469},
+      destinationCoord: {lat: 4.7432147, lng: -74.0404901}
     };
   },
   beforeMount() {
@@ -62,6 +70,10 @@ export default {
       // Init drive props
       this.drives = data;
     },
+    changeDrive({ start, end }) {
+      this.originCoord = start;
+      this.destinationCoord = end;
+    }
   },
 };
 </script>

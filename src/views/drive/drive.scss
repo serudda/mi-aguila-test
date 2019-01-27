@@ -1,6 +1,15 @@
 .drive-view {
   color: map-get($color, slate);
 
+  .map-section {
+    border-bottom: 3px solid map-get($color, darkSmoke);
+    height: 250px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
   .drives-section {
     padding-top: 300px;
 

@@ -1,6 +1,6 @@
 <!-- Template -->
 <template>
-  <div class="ma-card" :class="cardClass">
+  <div class="ma-card" :class="cardClass" @click="onCardClick">
     <div class="ma-card__info p-3 w-100">
       <span class="ma-badge ma-badge--xs ma-badge--neutral mb-3">
         <span class="font-weight-9 mr-2">id</span>
@@ -46,6 +46,19 @@ export default {
         'ma-card--info': this.data.status === 'started',
         'ma-card--warning': this.data.status === 'near'
       }
+    },
+  },
+  methods: {
+    onCardClick() {
+      const startLat = this.data.start.pickup_location.coordinates[1];
+      const startLng = this.data.start.pickup_location.coordinates[0];
+      const endLat = this.data.end.pickup_location.coordinates[1];
+      const endLng = this.data.end.pickup_location.coordinates[0];
+      this.$emit('drive-changed',
+      {
+        start: { lat: startLat, lng: startLng },
+        end: { lat: endLat, lng: endLng }
+      });
     },
   }
 };
