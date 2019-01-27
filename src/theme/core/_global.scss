@@ -1,0 +1,52 @@
+/************************************************/
+/*               GLOBAL VARIABLES               */
+/************************************************/
+
+$color: (
+  lightPrimary:   lighten(#00CC99, 10%),
+  primary:        #00CC99,
+  darkPrimary:    darken(#00CC99, 10%),
+  lightSecondary: #C9D9EE,
+  secondary:      #283DB8,
+  darkSecondary:  #142E62,
+  positive:       #57BE8C,
+  negative:       #FF4949,
+  warning:        #FFC82C,
+  info:           #408FEC,
+  black:          #24292E,
+  mirage:         #1F2D3D,
+  steel:          #273444,
+  slate:          #3C4858,
+  silver:         #8492A6,
+  smoke:          #E0E6ED,
+  darkSmoke:      #D3DCE6,
+  extraDarkSmoke: #C0CCDA,
+  snow:           #F9FAFC,
+  darkSnow:       #EFF2F7,
+  extraDarkSnow:  #E5E9F2,
+  white:          #FFFFFF
+);
+
+$body-background: map-get($color, snow);
+$body-font-color: map-get($color, white);
+
+
+/*               GLOBAL STYLES               */
+/*********************************************/
+
+body.ma {
+  padding: 0;
+  background-color: $body-background;
+  color: $body-font-color;
+  overflow-x: hidden;
+  height: 100%;
+  // text-rendering: optimizeLegibility;
+  // -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0;
+  @extend .font-family-montserrat;
+
+  [v-cloak] {
+    display:none;
+  }
+}

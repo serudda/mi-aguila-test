@@ -1,0 +1,30 @@
+.drive-view {
+  color: map-get($color, slate);
+}
+
+// Large devices (desktops, less than 1200px)
+@include media-breakpoint-down(xl) {
+  .expand {
+    &[aria-expanded="false"] {
+        height: 100px !important;
+    }
+  }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@include media-breakpoint-down(md) {
+  .expand {
+    &[aria-expanded="false"] {
+        height: 130px !important;
+    }
+  }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@include media-breakpoint-down(sm) {
+  .expand {
+    &[aria-expanded="false"] {
+        height: 250px !important;
+    }
+  }
+}
