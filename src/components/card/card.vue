@@ -1,6 +1,7 @@
 <!-- Template -->
 <template>
   <div class="ma-card" :class="cardClass" @click="onCardClick">
+    <div class="ma-card__status">{{ data.status | capitalize }}</div>
     <div class="ma-card__info p-3 w-100">
       <div class="title mb-3">
         <span class="ma-badge ma-badge--xs ma-badge--neutral">
@@ -23,7 +24,10 @@
           <span class="address color-silver">{{ data.end.pickup_address }}</span>
         </div>
       </div>
-      <div class="time"></div>
+    </div>
+    <div class="ma-card__time p-3 d-flex flex-column">
+      <span class="time mb-1">2hr · 30min</span>
+      <span class="label">estimated time</span>
     </div>
   </div>
 </template>

@@ -9,8 +9,10 @@
   @extend .justify-content-between;
 
   &__status {
-    width: 130px;
-    @extend .color-white;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    text-align: center;
+    @extend .color-slate;
   }
 
   &__info {
@@ -41,16 +43,53 @@
     }
   }
 
+  &__time {
+    min-width: 200px;
+    @extend .align-items-center;
+    @extend .align-content-center;
+    @extend .border-left-2;
+    @extend .border-left-style-dashed;
+    @extend .border-color-extra-dark-snow;
+    @extend .d-flex;
+    @extend .flex-column;
+    @extend .flex-center;
+    @extend .px-3;
+
+    .time, .label {
+      text-align: center;
+    }
+
+    .time {
+      @extend .font-size-lg;
+    }
+
+    .label {
+      @extend .color-slate;
+      @extend .font-size-sm;
+      @extend .font-weight-9;
+      @extend .line-height-3;
+    }
+  }
+
   &--positive {
-    border-left: 10px solid map-get($color, positive);
+    .ma-card__status {
+      background-color: map-get($color, positive);
+      color: map-get($color, white);
+    }
   }
 
   &--info {
-    border-left: 10px solid map-get($color, info);
+    .ma-card__status {
+      background-color: map-get($color, info);
+      color: map-get($color, white);
+    }
   }
 
   &--warning {
-    border-left: 10px solid map-get($color, warning);
+    .ma-card__status {
+      background-color: map-get($color, warning);
+      color: map-get($color, white);
+    }
   }
 
   &:hover {
