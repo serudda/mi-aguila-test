@@ -1,5 +1,18 @@
 .drive-view {
   color: map-get($color, slate);
+
+  .drives-section {
+    padding-top: 300px;
+
+    .help-text {
+      .icon {
+        width: 10px;
+        height: 10px;
+        display: inline-block;
+        border-radius: 100%;
+      }
+    }
+  }
 }
 
 // Large devices (desktops, less than 1200px)

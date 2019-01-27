@@ -1,0 +1,27 @@
+.ma-badge {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  text-decoration: none;
+  outline: none;
+  text-shadow: none;
+
+  /// BADGE-SIZE
+  &--xs {
+    padding: 2px 12px;
+    font-size: 14px;
+  }
+
+
+  /// BADGE-COLOR
+  &--neutral {
+    background-color: map-get($color, extraDarkSnow);
+    color: map-get($color, silver);
+  }
+
+}

@@ -2,11 +2,23 @@
 <template>
   <div class="drive-view">
     <ma-map></ma-map>
-    <div style="padding-top: 300px;" class="px-5">
-      <div>
-        <h3 class="color-silver m-0 mb-3">
+    <div class="drives-section px-5">
+      <div class="title d-flex align-items-center mb-3">
+        <h3 class="color-silver m-0 mr-4">
           Routes
         </h3>
+        <div class="help-text mr-3">
+          <span class="icon ma-bg-info mr-2"></span>
+          <span class="color-silver font-size-sm">Started</span>
+        </div>
+        <div class="help-text mr-3">
+          <span class="icon ma-bg-warning mr-2"></span>
+          <span class="color-silver font-size-sm">Near</span>
+        </div>
+        <div class="help-text">
+          <span class="icon ma-bg-positive mr-2"></span>
+          <span class="color-silver font-size-sm">On way</span>
+        </div>
       </div>
       <ma-card
         v-for="(drive, index) in drives"

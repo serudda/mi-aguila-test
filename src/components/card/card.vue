@@ -1,11 +1,25 @@
 <!-- Template -->
 <template>
-  <div class="ma-card">
-    <div :class="statusClass">
-      <span>{{ data.status | capitalize }}</span>
+  <div class="ma-card" :class="cardClass">
+    <div class="ma-card__info p-3 w-100">
+      <span class="ma-badge ma-badge--xs ma-badge--neutral mb-3">
+        <span class="font-weight-9 mr-2">id</span>
+        92915593-d070-49d4-94d1-4e4bff65772d
+      </span>
+      <div class="dates">
+        <div class="dates__detail mb-2">
+          <span class="title color-slate font-weight-9">start</span>
+          <span class="address color-silver">
+            {{ data.start.pickup_address }}
+          </span>
+        </div>
+        <div class="dates__detail dates__detail--end">
+          <span class="title color-slate font-weight-9">end</span>
+          <span class="address color-silver">{{ data.end.pickup_address }}</span>
+        </div>
+      </div>
+      <div class="time"></div>
     </div>
-    <div class="ma-card__info"></div>
-    <div class="ma-card__time"></div>
   </div>
 </template>
 
@@ -25,12 +39,12 @@ export default {
     return {};
   },
   computed: {
-    statusClass() {
+    cardClass() {
       return {
-        'ma-card__status': true,
-        'ma-bg-positive': this.data.status === 'onWay',
-        'ma-bg-info': this.data.status === 'started',
-        'ma-bg-warning': this.data.status === 'near'
+        'ma-card': true,
+        'ma-card--positive': this.data.status === 'onWay',
+        'ma-card--info': this.data.status === 'started',
+        'ma-card--warning': this.data.status === 'near'
       }
     },
   }
