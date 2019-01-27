@@ -1,0 +1,19 @@
+.ma-card {
+  background: map-get($color, white);
+  height: 80px;
+  width: 100%;
+  @extend .align-items-stretch;
+  @extend .border-radius-sm;
+  @extend .box-shadow-close;
+  @extend .d-flex;
+  @extend .justify-content-between;
+
+  &__status {
+    width: 130px;
+    @extend .align-items-center;
+    @extend .color-white;
+    @extend .d-flex;
+    @extend .h-100;
+    @extend .justify-content-center;
+  }
+}

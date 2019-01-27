@@ -1,8 +1,6 @@
 <!-- Template -->
 <template>
-  <div class="pt-lg-3 pl-lg-3 pr-lg-3" v-cloak>
-    <drive-view></drive-view>
-  </div>
+  <drive-view></drive-view>
 </template>
 
 

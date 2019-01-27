@@ -473,19 +473,19 @@
  *  BACKGROUND
  */
 
-// NOTE: We added 'lh' prefix to differentiate them with Boostrap 4
+// NOTE: We added 'ma' prefix to differentiate them with Boostrap 4
 
 /* Background brand colors */
-.lh-bg-light-primary  {background-color: map-get($color, lightPrimary);}
-.lh-bg-primary        {background-color: map-get($color, primary);}
-.lh-bg-dark-primary   {background-color: map-get($color, darkPrimary);}
+.ma-bg-light-primary  {background-color: map-get($color, lightPrimary);}
+.ma-bg-primary        {background-color: map-get($color, primary);}
+.ma-bg-dark-primary   {background-color: map-get($color, darkPrimary);}
 
-.lh-bg-light-secondary  {background-color: map-get($color, lightSecondary);}
-.lh-bg-secondary        {background-color: map-get($color, secondary);}
-.lh-bg-dark-secondary   {background-color: map-get($color, darkSecondary);}
+.ma-bg-light-secondary  {background-color: map-get($color, lightSecondary);}
+.ma-bg-secondary        {background-color: map-get($color, secondary);}
+.ma-bg-dark-secondary   {background-color: map-get($color, darkSecondary);}
 
 /* Background UI colors */
-.lh-bg-positive {
+.ma-bg-positive {
   background-color: map-get($color, positive);
   &--hover {
     &:hover {
@@ -493,7 +493,7 @@
     }
   }
 }
-.lh-bg-negative {
+.ma-bg-negative {
   background-color: map-get($color, negative);
   &--hover {
     &:hover {
@@ -501,7 +501,7 @@
     }
   }
 }
-.lh-bg-warning {
+.ma-bg-warning {
   background-color: map-get($color, warning);
   &--hover {
     &:hover {
@@ -509,7 +509,7 @@
     }
   }
 }
-.lh-bg-info {
+.ma-bg-info {
   background-color: map-get($color, info);
   &--hover {
     &:hover {
@@ -519,7 +519,7 @@
 }
 
 /* Background Grey colors */
-.lh-bg-black {
+.ma-bg-black {
   background-color: map-get($color, black);
   &--hover {
     &:hover {
@@ -527,7 +527,7 @@
     }
   }
 }
-.lh-bg-mirage {
+.ma-bg-mirage {
   background-color: map-get($color, mirage);
   &--hover {
     &:hover {
@@ -535,7 +535,7 @@
     }
   }
 }
-.lh-bg-steel {
+.ma-bg-steel {
   background-color: map-get($color, steel);
   &--hover {
     &:hover {
@@ -543,7 +543,7 @@
     }
   }
 }
-.lh-bg-slate {
+.ma-bg-slate {
   background-color: map-get($color, slate);
   &--hover {
     &:hover {
@@ -551,7 +551,7 @@
     }
   }
 }
-.lh-bg-silver {
+.ma-bg-silver {
   background-color: map-get($color, silver);
   &--hover {
     &:hover {
@@ -560,7 +560,7 @@
   }
 }
 
-.lh-bg-smoke {
+.ma-bg-smoke {
   background-color: map-get($color, smoke);
   &--hover {
     &:hover {
@@ -568,7 +568,7 @@
     }
   }
 }
-.lh-bg-dark-smoke {
+.ma-bg-dark-smoke {
   background-color: map-get($color, darkSmoke);
   &--hover {
     &:hover {
@@ -576,7 +576,7 @@
     }
   }
 }
-.lh-bg-extra-dark-smoke {
+.ma-bg-extra-dark-smoke {
   background-color: map-get($color, extraDarkSmoke);
   &--hover {
     &:hover {
@@ -585,7 +585,7 @@
   }
 }
 
-.lh-bg-snow {
+.ma-bg-snow {
   background-color: map-get($color, snow);
   &--hover {
     &:hover {
@@ -593,7 +593,7 @@
     }
   }
 }
-.lh-bg-dark-snow {
+.ma-bg-dark-snow {
   background-color: map-get($color, darkSnow);
   &--hover {
     &:hover {
@@ -601,7 +601,7 @@
     }
   }
 }
-.lh-bg-extra-dark-snow {
+.ma-bg-extra-dark-snow {
   background-color: map-get($color, extraDarkSnow);
   &--hover {
     &:hover {
@@ -610,7 +610,7 @@
   }
 }
 
-.lh-bg-white {
+.ma-bg-white {
   background-color: map-get($color,white);
   &--hover {
     &:hover {
@@ -619,7 +619,7 @@
   }
 }
 
-.lh-bg-transparent {
+.ma-bg-transparent {
   background-color: transparent;
 }
 
