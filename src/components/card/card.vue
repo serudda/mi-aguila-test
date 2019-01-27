@@ -32,8 +32,8 @@ export default {
   props: {
     data: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {};
@@ -44,8 +44,8 @@ export default {
         'ma-card': true,
         'ma-card--positive': this.data.status === 'onWay',
         'ma-card--info': this.data.status === 'started',
-        'ma-card--warning': this.data.status === 'near'
-      }
+        'ma-card--warning': this.data.status === 'near',
+      };
     },
   },
   methods: {
@@ -54,12 +54,8 @@ export default {
       const startLng = this.data.start.pickup_location.coordinates[0];
       const endLat = this.data.end.pickup_location.coordinates[1];
       const endLng = this.data.end.pickup_location.coordinates[0];
-      this.$emit('drive-changed',
-      {
-        start: { lat: startLat, lng: startLng },
-        end: { lat: endLat, lng: endLng }
-      });
+      this.$emit('drive-changed', { start: { lat: startLat, lng: startLng }, end: { lat: endLat, lng: endLng } });
     },
-  }
+  },
 };
 </script>

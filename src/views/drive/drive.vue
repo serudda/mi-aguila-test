@@ -42,20 +42,20 @@ import './drive.scss';
 
 import driveService from './drive_service';
 
-import card from '../../components/card/card';
-import map from '../../components/map/map';
+import card from '../../components/card/card.vue';
+import map from '../../components/map/map.vue';
 
 export default {
   name: 'drive-view',
   components: {
     'ma-card': card,
-    'ma-map': map
+    'ma-map': map,
   },
   data() {
     return {
       drives: [],
       originCoord: {lat: 4.6633728, lng: -74.0522469},
-      destinationCoord: {lat: 4.7432147, lng: -74.0404901}
+      destinationCoord: {lat: 4.7432147, lng: -74.0404901},
     };
   },
   beforeMount() {
