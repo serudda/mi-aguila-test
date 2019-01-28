@@ -23,7 +23,12 @@ Really you don't need an **'installation'**, you just open the app on this [url]
 git clone https://github.com/sruda/mi-aguila-test.git projectname
 ```
 
-2. Launch a local server:
+2. Install dependencies:
+```shell
+yarn install
+```
+
+3. Launch a local server:
 ```shell
 yarn serve
 ```
