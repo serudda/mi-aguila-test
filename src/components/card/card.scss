@@ -6,7 +6,14 @@
   @extend .border-radius-sm;
   @extend .box-shadow-close;
   @extend .d-flex;
+  @extend .position-relative;
   @extend .justify-content-between;
+
+  &__reload {
+    position: absolute;
+    right: 10px;
+    top: 17px;
+  }
 
   &__status {
     writing-mode: vertical-rl;

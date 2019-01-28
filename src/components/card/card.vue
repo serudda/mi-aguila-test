@@ -1,6 +1,15 @@
 <!-- Template -->
 <template>
-  <div class="ma-card" :class="cardClass" @click="onCardClick">
+  <div class="ma-card"
+    :class="cardClass"
+    @click="onCardClick"
+    @mouseover="onCardMouseover"
+    @mouseleave="onCardMouseleave">
+    <div class="ma-card__reload" v-if="showReloadBtn">
+      <span class="icon-btn icon-btn--neutral icon-btn--sm" @click="onReloadClick">
+        <img class="icon" v-bind:src="reloadIcon" />
+      </span>
+    </div>
     <div class="ma-card__status">{{ data.status | capitalize }}</div>
     <div class="ma-card__info p-3 w-100">
       <div class="title mb-3">
@@ -25,10 +34,16 @@
         </div>
       </div>
     </div>
-    <div class="ma-card__time p-3 d-flex flex-column">
-      <!--<span class="time mb-1">2hr · 30min</span>-->
-      <span class="time mb-1">{{ estimatedTime }}</span>
+    <div
+      class="ma-card__time p-3 d-flex flex-column"
+      v-if="!loading">
+      <span class="time mb-1">{{ estimatedTime.text }}</span>
       <span class="label">estimated time</span>
+    </div>
+    <div
+      class="ma-card__time p-3 d-flex flex-column"
+      v-if="loading">
+      <span class="time mb-1">reloading...</span>
     </div>
   </div>
 </template>
@@ -36,6 +51,7 @@
 <!-- Script -->
 <script>
 import './card.scss';
+import reloadIcon from '../../assets/reload.svg';
 
 export default {
   name: 'ma-card',
@@ -48,14 +64,20 @@ export default {
       required: true,
     },
     estimatedTime: {
-      type: Number,
-      default: 0
+      type: Object,
+      default: () => { return {text: '-', value: null}}
     }
   },
   data() {
-    return {};
+    return {
+      showReloadBtn: false,
+      loading: false,
+    };
   },
   computed: {
+    reloadIcon() {
+      return reloadIcon;
+    },
     cardClass() {
       return {
         'ma-card': true,
@@ -66,6 +88,12 @@ export default {
     },
   },
   methods: {
+    onCardMouseover() {
+      this.showReloadBtn = true;
+    },
+    onCardMouseleave() {
+      this.showReloadBtn = false;
+    },
     onCardClick() {
       const startLat = this.data.start.pickup_location.coordinates[1];
       const startLng = this.data.start.pickup_location.coordinates[0];
@@ -82,6 +110,13 @@ export default {
           { lat: waypointLat, lng: waypointLng }
         });
     },
+    onReloadClick() {
+      // NOTE: Simulate reloading data
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+      }, 3000);
+    }
   },
 };
 </script>

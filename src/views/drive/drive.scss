@@ -8,10 +8,12 @@
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1;
   }
 
   .drives-section {
     padding-top: 300px;
+    z-index: 0;
 
     .help-text {
       .icon {

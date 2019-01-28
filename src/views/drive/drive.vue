@@ -10,7 +10,7 @@
         :waypoint-coord="waypointCoord"
         @estimated-time="getEstimatedTime"></ma-map>
     </div>
-    <div class="drives-section px-5">
+    <div class="drives-section px-3 px-lg-5">
       <div class="title d-flex align-items-center mb-3">
         <h3 class="color-silver m-0 mr-4">
           Routes
@@ -85,9 +85,9 @@ export default {
       this.waypointCoord = waypoint;
       this.cardClicked = id;
     },
-    getEstimatedTime(id, time = 0) {
+    getEstimatedTime(id, { text, value }) {
       //NOTE: This was needed since I need to re render the component.
-      Vue.set(this.estimatedTimes, id, time);
+      Vue.set(this.estimatedTimes, id, {text, value});
     }
   },
 };

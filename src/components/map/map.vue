@@ -112,7 +112,7 @@ export default {
           this.makeMarker( origin, start);
           this.makeMarker( destination, end);
           this.makeMarker( waypoint, current);
-          this.estimatedTime = response.routes[0].legs[1].duration.value;
+          this.estimatedTime = response.routes[0].legs[1].duration;
           this.$emit('estimated-time', this.cardClickedId, this.estimatedTime);
         } else {
           console.log(`Directions request failed due to ${status}`);

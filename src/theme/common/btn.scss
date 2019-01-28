@@ -1,0 +1,21 @@
+.icon-btn {
+  @extend .border-radius-circle;
+
+  &--sm {
+    padding: 10px;
+
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &--neutral {
+    background-color: map-get($color, white);
+    @extend .box-shadow-raised;
+
+    &:hover {
+      background-color: map-get($color, darkSnow);
+    }
+  }
+}
