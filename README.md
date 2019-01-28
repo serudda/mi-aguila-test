@@ -51,7 +51,7 @@ There you can see the project running.
 
 <br>
 
-### Pendings
+### Pending tasks
 
 - The responsive is basic, I focused on the main functionality (google map, user experience, etc.).
 - It doesn't have a timer to request new data from the BackEnd, I thought on the several useless requests, so if the user wants to get new data, they have to to action to "reload". (it could be more efficient and straight forward, but it is not included in this demo).
