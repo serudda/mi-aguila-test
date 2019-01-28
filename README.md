@@ -1,5 +1,11 @@
 # Mi Águila - Front-End job position technical test
 
+### Stack
+- VueJS (Vue cli)
+- Bootstrap 4
+- Axios
+
+
 ### Install
 
 Really you don't need an **'installation'**, you just open the app on this [url](https://xenodochial-tesla-d7ad9e.netlify.com/). This project is deployed in [Netlify](https://www.netlify.com/), it's connected with the [GitHub](https://github.com/sruda/mi-aguila-test) repo to trigger a deployment anytime the code is changed in GitHub.
@@ -44,6 +50,13 @@ There you can see the project running.
 📈  · [BackEnd Endpoint Simulation (trips.json)](https://s3.amazonaws.com/waysily-img/trips.json)
 
 <br>
+
+### Pendings
+
+- The responsive is basic, I focused on the main functionality (google map, user experience, etc.).
+- It doesn't have a timer to request new data from the BackEnd, I thought on the several useless requests, so if the user wants to get new data, they have to to action to "reload". (it could be more efficient and straight forward, but it is not included in this demo).
+- There are some functions or methods those could be more efficients. I didn't have time to clean these code sections.
+- No time to include filters and sorts, but it was included in the sketches and mockups though.
 
 -----
 
