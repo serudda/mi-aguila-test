@@ -86,11 +86,8 @@ export default {
       this.cardClicked = id;
     },
     getEstimatedTime(id, time = 0) {
-      console.log('id: ', id);
-      console.log('time: ', time);
-      // this.estimatedTimes[id] = time;
+      //NOTE: This was needed since I need to re render the component.
       Vue.set(this.estimatedTimes, id, time);
-      // this.estimatedTimes.splice(id, 1, time);
     }
   },
 };

@@ -65,12 +65,6 @@ export default {
       };
     },
   },
-  watch: {
-    estimatedTime(newValue, oldValue) {
-      console.log('newValue: ', newValue);
-      console.log('oldValue: ', oldValue);
-    }
-  },
   methods: {
     onCardClick() {
       const startLat = this.data.start.pickup_location.coordinates[1];

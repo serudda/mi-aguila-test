@@ -49,7 +49,6 @@ export default {
     cardIndex(newCardIndex, oldCardIndex) {
       if(newCardIndex === oldCardIndex) { return; }
       this.cardClickedId = newCardIndex;
-      this.calculateAndDisplayRoute(this.directionsService, this.directionsDisplay);
     },
     originCoord(newOriginCoord, oldOriginCoord) {
       if(isEqual(newOriginCoord, oldOriginCoord)) { return; }
@@ -62,10 +61,6 @@ export default {
     waypointCoord(newWaypointCoord, oldWaypointCoord) {
       if(isEqual(newWaypointCoord, oldWaypointCoord)) { return; }
       this.calculateAndDisplayRoute(this.directionsService, this.directionsDisplay);
-    },
-    estimatedTime(newEstimatedTime, oldEstimatedTime) {
-      if(newEstimatedTime === oldEstimatedTime) { return; }
-      this.$emit('estimated-time', this.cardClickedId, newEstimatedTime);
     },
   },
   mounted() {
