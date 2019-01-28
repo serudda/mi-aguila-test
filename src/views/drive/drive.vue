@@ -38,6 +38,7 @@
         v-for="(drive, index) in drives"
         :key="index"
         :card-index="index"
+        :card-active="cardClicked"
         :data="drive"
         :estimated-time="estimatedTimes[index]"
         @drive-changed="changeDrive"

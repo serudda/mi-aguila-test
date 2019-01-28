@@ -59,6 +59,9 @@ export default {
     cardIndex: {
       type: Number,
     },
+    cardActive: {
+      type: Number,
+    },
     data: {
       type: Object,
       required: true,
@@ -72,6 +75,7 @@ export default {
     return {
       showReloadBtn: false,
       loading: false,
+      active: this.cardIndex === this.cardActive,
     };
   },
   computed: {
@@ -81,10 +85,16 @@ export default {
     cardClass() {
       return {
         'ma-card': true,
+        'active': this.active,
         'ma-card--positive': this.data.status === 'onWay',
         'ma-card--info': this.data.status === 'started',
         'ma-card--warning': this.data.status === 'near',
       };
+    },
+  },
+  watch: {
+    cardActive(newCardActive) {
+      this.active = this.cardIndex === newCardActive;
     },
   },
   methods: {
@@ -110,6 +120,7 @@ export default {
           { lat: waypointLat, lng: waypointLng }
         });
       this.onReloadClick();
+      this.active = this.cardIndex === this.cardActive;
     },
     onReloadClick() {
       // NOTE: Simulate reloading data

@@ -9,6 +9,10 @@
   @extend .position-relative;
   @extend .justify-content-between;
 
+  &.active {
+    border: 2px solid map-get($color, primary);
+  }
+
   &__reload {
     position: absolute;
     right: 10px;
