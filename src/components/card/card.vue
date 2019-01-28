@@ -26,7 +26,8 @@
       </div>
     </div>
     <div class="ma-card__time p-3 d-flex flex-column">
-      <span class="time mb-1">2hr · 30min</span>
+      <!--<span class="time mb-1">2hr · 30min</span>-->
+      <span class="time mb-1">{{ estimatedTime }}</span>
       <span class="label">estimated time</span>
     </div>
   </div>
@@ -39,10 +40,17 @@ import './card.scss';
 export default {
   name: 'ma-card',
   props: {
+    cardIndex: {
+      type: Number,
+    },
     data: {
       type: Object,
       required: true,
     },
+    estimatedTime: {
+      type: Number,
+      default: 0
+    }
   },
   data() {
     return {};
@@ -57,6 +65,12 @@ export default {
       };
     },
   },
+  watch: {
+    estimatedTime(newValue, oldValue) {
+      console.log('newValue: ', newValue);
+      console.log('oldValue: ', oldValue);
+    }
+  },
   methods: {
     onCardClick() {
       const startLat = this.data.start.pickup_location.coordinates[1];
@@ -65,7 +79,7 @@ export default {
       const endLng = this.data.end.pickup_location.coordinates[0];
       const waypointLat = this.data.driver_location.coordinates[1];
       const waypointLng = this.data.driver_location.coordinates[0];
-      this.$emit('drive-changed',
+      this.$emit('drive-changed', this.cardIndex,
         { start:
           { lat: startLat, lng: startLng },
           end:

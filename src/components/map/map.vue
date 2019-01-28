@@ -11,10 +11,14 @@ import './map.scss';
 import markerStartIcon from '../../assets/pin-start.svg';
 import markerEndIcon from '../../assets/pin-end.svg';
 import markerWaypointIcon from '../../assets/pin-waypoint.svg';
+import { isEqual } from 'lodash';
 
 export default {
   name: 'ma-map',
   props: {
+    cardIndex: {
+      type: Number,
+    },
     name: {
       type: String,
     },
@@ -37,20 +41,31 @@ export default {
       markers: [],
       directionsService: null,
       directionsDisplay: null,
+      estimatedTime: 0,
+      cardClickedId: 0,
     };
   },
   watch: {
+    cardIndex(newCardIndex, oldCardIndex) {
+      if(newCardIndex === oldCardIndex) { return; }
+      this.cardClickedId = newCardIndex;
+      this.calculateAndDisplayRoute(this.directionsService, this.directionsDisplay);
+    },
     originCoord(newOriginCoord, oldOriginCoord) {
-      if(newOriginCoord === oldOriginCoord) { return; }
+      if(isEqual(newOriginCoord, oldOriginCoord)) { return; }
       this.calculateAndDisplayRoute(this.directionsService, this.directionsDisplay);
     },
     destinationCoord(newDestinationCoord, oldDestinationCoord) {
-      if(newDestinationCoord === oldDestinationCoord) { return; }
+      if(isEqual(newDestinationCoord, oldDestinationCoord)) { return; }
       this.calculateAndDisplayRoute(this.directionsService, this.directionsDisplay);
     },
     waypointCoord(newWaypointCoord, oldWaypointCoord) {
-      if(newWaypointCoord === oldWaypointCoord) { return; }
+      if(isEqual(newWaypointCoord, oldWaypointCoord)) { return; }
       this.calculateAndDisplayRoute(this.directionsService, this.directionsDisplay);
+    },
+    estimatedTime(newEstimatedTime, oldEstimatedTime) {
+      if(newEstimatedTime === oldEstimatedTime) { return; }
+      this.$emit('estimated-time', this.cardClickedId, newEstimatedTime);
     },
   },
   mounted() {
@@ -102,6 +117,8 @@ export default {
           this.makeMarker( origin, start);
           this.makeMarker( destination, end);
           this.makeMarker( waypoint, current);
+          this.estimatedTime = response.routes[0].legs[1].duration.value;
+          this.$emit('estimated-time', this.cardClickedId, this.estimatedTime);
         } else {
           console.log(`Directions request failed due to ${status}`);
         }

@@ -4,9 +4,11 @@
     <div class="map-section">
       <ma-map
         name="routes"
+        :card-index="cardClicked"
         :origin-coord="originCoord"
         :destination-coord="destinationCoord"
-        :waypoint-coord="waypointCoord"></ma-map>
+        :waypoint-coord="waypointCoord"
+        @estimated-time="getEstimatedTime"></ma-map>
     </div>
     <div class="drives-section px-5">
       <div class="title d-flex align-items-center mb-3">
@@ -29,7 +31,9 @@
       <ma-card
         v-for="(drive, index) in drives"
         :key="index"
+        :card-index="index"
         :data="drive"
+        :estimated-time="estimatedTimes[index]"
         @drive-changed="changeDrive"
         class="mb-4">
       </ma-card>
@@ -39,6 +43,7 @@
 
 <!-- Script -->
 <script>
+import Vue from 'vue';
 import './drive.scss';
 
 import driveService from './drive_service';
@@ -58,6 +63,8 @@ export default {
       originCoord: {lat: 4.6633728, lng: -74.0522469},
       destinationCoord: {lat: 4.7432147, lng: -74.0404901},
       waypointCoord: {lat: 4.7432147, lng: -74.0404901},
+      estimatedTimes: [],
+      cardClicked: 0,
     };
   },
   beforeMount() {
@@ -72,10 +79,18 @@ export default {
       // Init drive props
       this.drives = data;
     },
-    changeDrive({ start, end, waypoint }) {
+    changeDrive(id, { start, end, waypoint }) {
       this.originCoord = start;
       this.destinationCoord = end;
       this.waypointCoord = waypoint;
+      this.cardClicked = id;
+    },
+    getEstimatedTime(id, time = 0) {
+      console.log('id: ', id);
+      console.log('time: ', time);
+      // this.estimatedTimes[id] = time;
+      Vue.set(this.estimatedTimes, id, time);
+      // this.estimatedTimes.splice(id, 1, time);
     }
   },
 };
