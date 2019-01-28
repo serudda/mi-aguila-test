@@ -85,6 +85,9 @@ export default {
         zoomControlOptions: {
           position: google.maps.ControlPosition.LEFT,
         },
+        fullscreenControlOptions: {
+          position: google.maps.ControlPosition.LEFT,
+        }
       };
 
       // Init map instance

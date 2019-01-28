@@ -109,6 +109,7 @@ export default {
           waypoint:
           { lat: waypointLat, lng: waypointLng }
         });
+      this.onReloadClick();
     },
     onReloadClick() {
       // NOTE: Simulate reloading data

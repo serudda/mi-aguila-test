@@ -1,7 +1,13 @@
 <!-- Template -->
 <template>
   <div class="drive-view">
-    <div class="map-section">
+    <div class="float-btn-section">
+      <span class="icon-btn icon-btn--neutral icon-btn--sm" @click="onShowCloseMapClick">
+        <img class="icon" v-bind:src="closeIcon" v-if="openedMap"/>
+        <img class="icon" v-bind:src="mapIcon" v-if="!openedMap"/>
+      </span>
+    </div>
+    <div class="map-section" v-show="openedMap">
       <ma-map
         name="routes"
         :card-index="cardClicked"
@@ -10,7 +16,7 @@
         :waypoint-coord="waypointCoord"
         @estimated-time="getEstimatedTime"></ma-map>
     </div>
-    <div class="drives-section px-3 px-lg-5">
+    <div :class="drivesSectionClass">
       <div class="title d-flex align-items-center mb-3">
         <h3 class="color-silver m-0 mr-4">
           Routes
@@ -45,6 +51,8 @@
 <script>
 import Vue from 'vue';
 import './drive.scss';
+import closeIcon from '../../assets/close.svg';
+import mapIcon from '../../assets/map.svg';
 
 import driveService from './drive_service';
 
@@ -65,7 +73,24 @@ export default {
       waypointCoord: {lat: 4.7432147, lng: -74.0404901},
       estimatedTimes: [],
       cardClicked: 0,
+      openedMap: true
     };
+  },
+  computed: {
+    closeIcon() {
+      return closeIcon;
+    },
+    mapIcon() {
+      return mapIcon;
+    },
+    drivesSectionClass() {
+      return {
+        'drives-section': true,
+        'px-3 px-lg-5': true,
+        'pt-4': !this.openedMap,
+        'drives-section--extra-top': this.openedMap,
+      };
+    },
   },
   beforeMount() {
     driveService.getDrives().then((data) => {
@@ -88,6 +113,9 @@ export default {
     getEstimatedTime(id, { text, value }) {
       //NOTE: This was needed since I need to re render the component.
       Vue.set(this.estimatedTimes, id, {text, value});
+    },
+    onShowCloseMapClick() {
+      this.openedMap = !this.openedMap;
     }
   },
 };
